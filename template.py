@@ -10,7 +10,7 @@ CONTACT_RIGHT = 2
 
 """ STAGE 2 (find first number) """
 # TODO: Fill in AWL contact point entries
-data = np.array([
+awl = np.array([
     (0, 0, 0),
     (2, 0, 0),
     (4, 0, 0),
@@ -65,19 +65,17 @@ data = np.array([
 ])
 
 # Generate AWL plot
-x = data[:, 0]
-y_left = data[:, 1]
-y_right = data[:, 2]
+x = awl[:, 0]
+y_left = awl[:, 1]
+y_right = awl[:, 2]
 
 fig, ax1 = plt.subplots()
 
-# Plot left y-axis data
 ax1.plot(x, y_left, marker='o', color='tab:blue', label='left')
 ax1.set_xlabel('start position')
 ax1.set_ylabel('Left contact', color='tab:blue')
 ax1.tick_params(axis='y', labelcolor='tab:blue')
 
-# Create a second y-axis sharing the same x-axis
 ax2 = ax1.twinx()
 ax2.plot(x, y_right, marker='s', color='tab:red', label='right')
 ax2.set_ylabel('Right contact', color='tab:red')
@@ -85,17 +83,17 @@ ax2.tick_params(axis='y', labelcolor='tab:red')
 
 plt.title('AWL contact points')
 fig.tight_layout()
-plt.savefig('graph.png')
+plt.savefig('awl.png')
 # plt.show()
 
 # TODO: Find wheel number (high test)
-# If target is "41", use following formula:
-# R51 L41 L41 (3 rev R then 51, 2 rev L then to 41)
-# L41 R51 L41 (3 rev L then 41, 2 rev R then 51, 1 rev L then 41)
-# L41 L41 R51 (3 rev L then 41, 1 rev R then 51)
+# E.g. if target is "41", use following formula:
+# R51 L41 L41 (3 rev R then to 51, 2 rev L then to 41)
+# L41 R51 L41 (3 rev L then to 41, 2 rev R then to 51, 1 rev L then to 41)
+# L41 L41 R51 (3 rev L then to 41, 1 rev R then to 51)
 
-# W1: ___ ___ ___ Width:
-# W2: ___ ___ ___ Width:
-# W3: ___ ___ ___ Width:
+# W1: ___ ___ ___ Width: ___
+# W2: ___ ___ ___ Width: ___
+# W3: ___ ___ ___ Width: ___
 
 """ STAGE 3 (find second number) """
